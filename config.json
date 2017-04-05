@@ -1,0 +1,12 @@
+{
+    "url":"http://www.google.com/finance/info?q=",
+    "stocks": [
+        "AAPL",
+        "INNL",
+        "PNRA",
+        "LNDC",
+        "NEOS",
+        "KNDI",
+        "MSFT"
+    ]
+}
