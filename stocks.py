@@ -4,7 +4,7 @@ import urllib
 # character lengths for formatting
 L_LINE = 21     # when using oledExp.setTextColumns
 L_NAME = 4      # max 4 characters
-L_PRICE = 7     # allow up to 9999.99
+L_PRICE = 8     # allow up to 9999.99
 L_CHANGEP = 6   # max 99.99% (not including +/- sign, but including % sign)
 
 def readJsonFile(filename):
@@ -21,8 +21,8 @@ def readGoogleFinance(response):
     return data
 
 # get a list of stock info objects from api    
-def getStocks(url, stocks):
-    requestTarget = url
+def getStocks(stocks):
+    requestTarget = "http://www.google.com/finance/info?q="
     for i in range(0, len(stocks)):
         requestTarget += stocks[i] + ","                    # add stock tickers to request
     site = urllib.urlopen(requestTarget)                    # send request
@@ -40,7 +40,9 @@ def formatGoogleStockInfo(googleStock):
         "changePercentageAmount": str(abs(float(googleStock["cp_fix"])))
     }
     stockString = stockInfo["ticker"].ljust(L_NAME)
-    stockString += " $" + stockInfo["price"].rjust(L_PRICE)
+    stockString += " "
+    formattedPrice = "$" + stockInfo["price"]
+    stockString += formattedPrice.rjust(L_PRICE)
     stockString += " " + stockInfo["changeDirection"]
     formattedChangePercentage = stockInfo["changePercentageAmount"] + "%"
     stockString += formattedChangePercentage.rjust(L_CHANGEP)

@@ -14,7 +14,7 @@ timeHeader = now.strftime("%Y-%m-%d : %X")
 payload = [timeHeader]
 
 # collect stock data
-stockList = stocks.getStocks(config["url"], config["stocks"])
+stockList = stocks.getStocks(config["stocks"])
 
 for i in range(0, min(len(stockList), MAX_STOCKS)):
     stockString = stocks.formatGoogleStockInfo(stockList[i])
