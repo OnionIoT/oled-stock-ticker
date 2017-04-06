@@ -1,12 +1,10 @@
 from OmegaExpansion import oledExp
 
 oledExp.driverInit()
-
+oledExp.clear()
 
 def writeLines(lines, startingRow):
-    # initialize oled to text display
-    oledExp.setTextColumns()
-    
+
     # set the cursor to the beginning of the row where you want to start printing
     oledExp.setCursor(startingRow, 0)
     

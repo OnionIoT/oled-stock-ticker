@@ -1,7 +1,11 @@
+import os
 import stocks
 import datetime
 import oledDriver
-config = stocks.readJsonFile('./config.json')
+# gets the location of this script
+dirName = os.path.dirname(os.path.abspath(__file__))
+# read the config file relative to the script location
+config = stocks.readJsonFile('/'.join([dirName, 'config.json']))
 
 # setup constants and data structures
 MAX_STOCKS = 7
