@@ -1,5 +1,6 @@
 import json
 import urllib
+import re
 
 # character lengths for formatting
 L_LINE = 21     # when using oledExp.setTextColumns
@@ -15,10 +16,10 @@ def readJsonFile(filename):
 # sends request to google finance api, receives json array with some characters in front
 # turn response into python object
 def readGoogleFinance(response):
-    data = response.replace("/", "")
-    data = data.replace("\n","")
-    data = json.loads(data)
-    return data
+    data = response.replace("\n","")            # remove newlines
+    data = re.sub(r'^// ', '', data)    # remove padding characters at beginning    
+    data = json.loads(data)                 # read the json
+    return data                             # returns a list of dicts 
 
 # get a list of stock info objects from api    
 def getStocks(stocks):
