@@ -1,11 +1,11 @@
 {
     "stocks": [
         "AAPL",
-        "INNL",
-        "PNRA",
-        "LNDC",
-        "NEOS",
-        "KNDI",
-        "MSFT"
+        "GOOG",
+        "MSFT",
+        "KO",
+        "PEP",
+        "AMZN",
+        "YHOO"
     ]
 }
