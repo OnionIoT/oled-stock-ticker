@@ -1,5 +1,5 @@
 import json
-import urllib
+import urllib3
 import re
 
 # character lengths for formatting
@@ -23,12 +23,13 @@ def readGoogleFinance(response):
 
 # get a list of stock info objects from api    
 def getStocks(stocks):
-    requestTarget = "http://www.google.com/finance/info?q="
+    http = urllib3.PoolManager()
+    url = "http://www.google.com/finance/info?q="
     for i in range(0, len(stocks)):
-        requestTarget += stocks[i] + ","                    # add stock tickers to request
-    site = urllib.urlopen(requestTarget)                    # send request
-    rawResponse = site.read()                               # read response
-    return readGoogleFinance(rawResponse)             # returns list of stock objects
+        url += stocks[i] + ","                    # add stock tickers to request
+    
+    stocksRequest = http.request('GET', url)      # send request
+    return readGoogleFinance(stocksRequest.data.decode('utf-8'))             # returns list of stock objects
 
 # formats the data returned from google api into a neat string
 # adjust to what you want to see
