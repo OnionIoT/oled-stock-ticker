@@ -49,10 +49,3 @@ def formatGoogleStockInfo(googleStock):
     stockString += formattedChangePercentage.rjust(L_CHANGEP)
     
     return stockString
-
-def __main__():
-    print "hello"
-    print getStocks("http://www.google.com/finance/info?q=", ["AAPL"])
-
-if __name__ == "__main__":
-    __main__()
