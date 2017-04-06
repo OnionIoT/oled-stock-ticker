@@ -1,3 +1,4 @@
+import sys
 import json
 import urllib3
 import re
@@ -50,3 +51,7 @@ def formatGoogleStockInfo(googleStock):
     stockString += formattedChangePercentage.rjust(L_CHANGEP)
     
     return stockString
+
+if __name__ == '__main__':
+    print json.dumps(getStocks([sys.argv[1]]))
+    
