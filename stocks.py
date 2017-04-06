@@ -53,5 +53,5 @@ def formatGoogleStockInfo(googleStock):
     return stockString
 
 if __name__ == '__main__':
-    print json.dumps(getStocks([sys.argv[1]]))
+    print json.dumps(getStocks([sys.argv[1]]), indent=4)
     
